@@ -1,9 +1,9 @@
 package com.smartcontact.services;
 
-import com.smartcontact.entities.User;
+import com.smartcontact.dto.UserDTO;
 
 public interface UserService {
 	
-	public void save(User user);
+	public UserDTO save(UserDTO userDTO);
 
 }

@@ -1,6 +1,6 @@
-body {
+/* body {
   background-color: #ffffff;
-}
+} */
 
 .bg-green{
     background-color: #408080!important;
@@ -18,3 +18,12 @@ nav .navbar-nav li a{
  nav .navbar-brand{
   color: white !important;
   }
+  
+.my_card{
+	padding:40px;
+	background:#FFFFFF;
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+.checkboxes input{
+  margin: 0 5px 0 30px;
+}

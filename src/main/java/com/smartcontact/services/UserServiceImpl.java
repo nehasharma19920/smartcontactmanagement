@@ -3,7 +3,8 @@ package com.smartcontact.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.smartcontact.entities.User;
+import com.smartcontact.dto.UserDTO;
+import com.smartcontact.entities.UserEntity;
 import com.smartcontact.repositories.UserRepositories;
 @Service
 public class UserServiceImpl implements UserService {
@@ -11,8 +12,9 @@ public class UserServiceImpl implements UserService {
 
 	
 	@Override
-	public void save(User user) {
-		userRepositories.save(user);
+	public UserDTO save(UserDTO userDTO) {
+		
+		return UserDTO.of(userRepositories.save(UserEntity.of(userDTO)));
 		
 	}
 
