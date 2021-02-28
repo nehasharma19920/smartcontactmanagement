@@ -4,6 +4,8 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,6 +24,8 @@ import com.smartcontact.services.UserService;
 @Controller
 public class HomeController {
 	
+	private @Autowired BCryptPasswordEncoder passwordEncoder;
+	
 	@Autowired UserService userservice;
 	@RequestMapping(value = "/")
 	public String home(Model model) {
@@ -38,7 +42,7 @@ public class HomeController {
 	@RequestMapping(value = "/signup")
 	public String singUp(Model model) {
 		model.addAttribute("tittle", "Registration");
-		model.addAttribute("user", new UserEntity());
+		model.addAttribute("user", new UserDTO());
 		return "signup";
 		
 	}
@@ -62,6 +66,7 @@ public class HomeController {
 		}
 		user.setRole("ROLE_USER");
 		user.setEnabled(true);
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		UserDTO result = userservice.save(user);
 		session.setAttribute("message", new Message("Successfully Register ", "alert-success"));
 		model.addAttribute("user", result);
