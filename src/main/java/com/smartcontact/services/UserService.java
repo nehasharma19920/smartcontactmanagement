@@ -5,5 +5,7 @@ import com.smartcontact.dto.UserDTO;
 public interface UserService {
 	
 	public UserDTO save(UserDTO userDTO);
+	
+	public UserDTO getUserDetailsByUserName(String username);
 
 }

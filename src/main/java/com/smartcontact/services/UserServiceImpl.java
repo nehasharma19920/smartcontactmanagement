@@ -18,4 +18,11 @@ public class UserServiceImpl implements UserService {
 		
 	}
 
+
+	@Override
+	public UserDTO getUserDetailsByUserName(String username) {
+		// TODO Auto-generated method stub
+		return UserDTO.of(userRepositories.getUserByUserName(username));
+	}
+
 }

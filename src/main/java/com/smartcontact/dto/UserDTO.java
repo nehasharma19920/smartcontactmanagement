@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
-import com.smartcontact.configuration.FieldMatch;
+
 import com.smartcontact.entities.UserEntity;
 
 

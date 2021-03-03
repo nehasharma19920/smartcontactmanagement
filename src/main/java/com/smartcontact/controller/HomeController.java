@@ -79,4 +79,11 @@ public class HomeController {
 		return "signup";
 		
 	}
+	
+	@RequestMapping(value = "/signin")
+	public String customLogin(Model model) {
+	
+		return "login";
+		
+	}
 }
