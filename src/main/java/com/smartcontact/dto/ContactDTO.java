@@ -81,6 +81,14 @@ public class ContactDTO {
 		  return new ContactDTO(contactEntity.getCid(), contactEntity.getName(), contactEntity.getPhoneNumber(), 
 				  contactEntity.getDescription(), contactEntity.getImage(),contactEntity.getNickName(),contactEntity.getEmail(),contactEntity.getWork());
 	}
+	@Override
+	public String toString() {
+		return "ContactDTO [cid=" + cid + ", name=" + name + ", phoneNumber=" + phoneNumber + ", description="
+				+ description + ", image=" + image + ", nickName=" + nickName + ", email=" + email + ", work=" + work
+				+ "]";
+	}
+	
+	
 	
 	
 

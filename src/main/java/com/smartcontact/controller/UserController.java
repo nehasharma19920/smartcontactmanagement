@@ -2,14 +2,23 @@ package com.smartcontact.controller;
 
 import java.security.Principal;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.smartcontact.dto.UserDTO;
+import com.smartcontact.entities.ContactEntity;
+import com.smartcontact.entities.UserEntity;
+import com.smartcontact.helper.Message;
+import com.smartcontact.repositories.UserRepositories;
 import com.smartcontact.dto.ContactDTO;
 import com.smartcontact.services.UserService;
 
@@ -42,5 +51,20 @@ public String openAddContactForm(Model model) {
 	
 }
 
+
+@PostMapping(value ="/process_contact")
+public String addContact(@ModelAttribute ContactDTO contactdto  ,@RequestParam("profileImage") MultipartFile file, Principal principle,HttpSession session) {
+	System.out.println(contactdto);
+	
+	String userName = principle.getName();
+	boolean value = userService.saveContact(userName,file, contactdto);
+	if(value) {
+		session.setAttribute("message", new Message("Contact Added sucessfully!! Add more.","success"));
+	}else {
+		session.setAttribute("message", new Message("something went wrong","danger"));
+	}
+	return "normal/add_contact";
+	
+}
 
 }

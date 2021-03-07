@@ -15,9 +15,10 @@
 					<div class="row">
 
 						<div class="col-md-8 offset-md-2">
+						
 							<form action="#" th:object="${contact}"
 								enctype="multipart/form-data" method="post"
-								th:action="@{/user/process_contact}" class="mt-2">
+								th:action="@{/user/process_contact}" class="mt-4">
 
 								<!--first field  -->
 								<div class="input-group">
@@ -75,7 +76,7 @@
 									<div class="input-group-prepend">
 
 										<div class="input-group-text">
-										<i class="fa  fa-briefcase"></i>
+											<i class="fa  fa-briefcase"></i>
 										</div>
 
 									</div>
@@ -84,24 +85,23 @@
 
 
 								</div>
-									<div class="custom-file mt-3">
-									<input type="file" id="image" name="image"
-										 class="form-control">
-                            		</div>
+								<div class="custom-file mt-3">
+									<input type="file" id="image" name="profileImage"
+										class="form-control">
+								</div>
 
 								<div class="input-group mt-3">
 									<textarea class="form-control" id="description"
-									placeholder=""
-									 name="description" rows="8"
-									required="required"></textarea>
+										placeholder="Tell me about yourself" name="description"
+										rows="12" required="required"></textarea>
 
 
 								</div>
-								
-								
+
+
 								<div class="container text-center mt-3">
-								<button class = "btn btn-outline-primary">Save Contact</button>
-								
+									<button class="btn btn-outline-primary">Save Contact</button>
+
 								</div>
 
 							</form>
