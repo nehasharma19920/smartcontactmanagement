@@ -40,3 +40,66 @@ const toggleSidebar = () =>{
 		
 	}
 }
+
+function deleteContact(cId){
+	swal({
+		  title: "Are you sure?",
+		  text: "You want to delete this contact!",
+		  icon: "warning",
+		  buttons: true,
+		  dangerMode: true,
+		})
+		.then((willDelete) => {
+		  if (willDelete) {
+			  deleteContactRequest(cId);
+		
+		    /*swal("Your contact  been deleted!", {
+		      icon: "success",
+		    });*/
+		  } else {
+		    swal("Your Contact is safe!");
+		  }
+		});
+}
+function deleteContactRequest(cId) {
+	  var xhttp = new XMLHttpRequest();
+	  xhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	      console.log("Deleted")
+	      window.location.reload();
+	    }
+	  };
+	  xhttp.open("POST", "/user/contact/delete/"+cId, true);
+	  xhttp.send();
+	}
+
+
+function deleteUser(){
+	swal({
+		  title: "Are you sure?",
+		  text: "You want to delete this Account!",
+		  icon: "warning",
+		  buttons: true,
+		  dangerMode: true,
+		})
+		.then((willDelete) => {
+		  if (willDelete) {
+			  deleteUserRequest();
+		
+		  } else {
+		    swal("Your Account  is safe!");
+		  }
+		});
+}
+function deleteUserRequest() {
+	  var xhttp = new XMLHttpRequest();
+	  xhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	      console.log("Deleted")
+	      window.location.reload();
+	    }
+	  };
+	  xhttp.open("POST", "/user/delete", true);
+	  xhttp.send();
+	}
+

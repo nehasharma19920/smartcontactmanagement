@@ -54,14 +54,15 @@
 	<div class="sidebar">
 		<!-- 	<span onclick = "toggleSidebar()" class=crossBtn>&times;</span> -->
 		<a href="#" th:href=@{/user/index} class="item"><i
-			class="fas fa-home"></i><span>Home</span></a> <a href="#" class="item"><i
+			class="fas fa-home"></i><span>Home</span></a> <a href="#"
+			th:href=@{/user/view_contacts/0} class="item"><i
 			class="fas fa-id-card-alt"></i> <span>View Contacts</span></a> <a
 			href="#" th:href=@{/user/add_contact} class="item"><i
-			class="fas fa-address-book"></i><span>Add Contact</span></a> <a href="#"
-			class="item"><i class="fas fa-user-alt"></i><span>Your
-				profile</span></a> <a href="#" class="item"><i class="fas fa-user-cog"></i><span>Settings</span></a>
-		<a href="#" class="item"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a>
-		<div class="divider"></div>
+			class="fas fa-address-book"></i><span>Add Contact</span></a> 
+			<a href="#" th:href = @{/user/profile} class="item"><i class="fas fa-user-alt"></i><span>Your profile</span></a> 
+			<a href="#" class="item"><i class="fas fa-user-cog"></i><span>Settings</span></a>
+		    <a href="#" class="item"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a>
+		    <div class="divider"></div>
 	</div>
 
 	<!-- End of  navbar -->
@@ -102,6 +103,7 @@
 	<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
 	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 	<script th:src="@{assets/password-strength-meter/password.min.js}"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 </body>
 </html>

@@ -28,12 +28,12 @@ public class UserEntity {
 	@Column(unique = true)
 	private String email;
 	private String password;
-	private String imageUrl;
+	private String image;
 	@Column(length = 500)
 	private String about;
 	private String role;
 	private boolean enabled;
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "userEntity")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true, mappedBy = "userEntity")
 	private List<ContactEntity> contactEntityList = new ArrayList<ContactEntity>();
 
 	public UserEntity() {
@@ -42,14 +42,14 @@ public class UserEntity {
 	}
 
 
-	public UserEntity(Long id, String name, String email, String password, String imageUrl, String about, String role,
+	public UserEntity(Long id, String name, String email, String password, String image, String about, String role,
 			boolean enabled, List<ContactEntity> contactEntityList) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.email = email;
 		this.password = password;
-		this.imageUrl = imageUrl;
+		this.image = image;
 		this.about = about;
 		this.role = role;
 		this.enabled = enabled;
@@ -89,12 +89,12 @@ public class UserEntity {
 		this.password = password;
 	}
 
-	public String getImageUrl() {
-		return imageUrl;
+	public String getImage() {
+		return image;
 	}
 
-	public void setImageUrl(String imageUrl) {
-		this.imageUrl = imageUrl;
+	public void setImage(String imageUrl) {
+		this.image = image;
 	}
 
 	public String getAbout() {
@@ -131,12 +131,12 @@ public class UserEntity {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", imageUrl="
-				+ imageUrl + ", about=" + about + ", role=" + role + ", enabled=" + enabled + ", contactList="
+				+ image + ", about=" + about + ", role=" + role + ", enabled=" + enabled + ", contactList="
 				+ contactEntityList + "]";
 	}
 	public static UserEntity of(UserDTO userDTO) {
 		return new UserEntity(userDTO.getId(), userDTO.getName(), userDTO.getEmail(), userDTO.getPassword(),
-				userDTO.getImageUrl(), userDTO.getAbout(), userDTO.getRole(), false,
+				userDTO.getImage(), userDTO.getAbout(), userDTO.getRole(), false,
 				userDTO.getContactDTOList().stream().map(ContactEntity::of).collect(Collectors.toList()));
 	}
 

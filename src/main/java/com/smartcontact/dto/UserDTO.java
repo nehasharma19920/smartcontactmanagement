@@ -21,7 +21,7 @@ public class UserDTO {
 	private String email;
 	@NotEmpty(message = "Password should not be empty ")
 	private String password;
-	private String imageUrl;
+	private String image;
 	private String about;
 	private String role;
 	private boolean enabled;
@@ -33,14 +33,14 @@ public class UserDTO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public UserDTO(Long id, String name, String email, String password, String imageUrl, String about, String role,
+	public UserDTO(Long id, String name, String email, String password, String image, String about, String role,
 			boolean enabled, List<ContactDTO> contactDto) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.email = email;
 		this.password = password;
-		this.imageUrl = imageUrl;
+		this.image = image;
 		this.about = about;
 		this.role = role;
 		this.enabled = enabled;
@@ -67,8 +67,8 @@ public class UserDTO {
 		return password;
 	}
 
-	public String getImageUrl() {
-		return imageUrl;
+	public String getImage() {
+		return image;
 	}
 
 	public String getAbout() {
@@ -99,8 +99,8 @@ public class UserDTO {
 		this.password = password;
 	}
 
-	public void setImageUrl(String imageUrl) {
-		this.imageUrl = imageUrl;
+	public void setImage(String imageUrl) {
+		this.image = imageUrl;
 	}
 
 	public void setAbout(String about) {
@@ -129,8 +129,8 @@ public class UserDTO {
 
 	public static UserDTO of(UserEntity entity) {
 		return new UserDTO(entity.getId(), entity.getName(), entity.getEmail(), entity.getPassword(),
-				entity.getImageUrl(), entity.getAbout(), entity.getRole(), false,
-				entity.getContactList().stream().map(ContactDTO::of).collect(Collectors.toList()));
+				entity.getImage(), entity.getAbout(), entity.getRole(), false,
+				entity.getContactList() == null ? new ArrayList<ContactDTO>() :entity.getContactList().stream().map(ContactDTO::of).collect(Collectors.toList()));
 	}
 
 }

@@ -11,13 +11,14 @@ public class ContactDTO {
 	private String nickName;
 	private String email;
 	private String work;
+	private Long userId;
 
 	public ContactDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public ContactDTO(Long cid, String name, String phoneNumber, String description, String image, String nickName,
-			String email, String work) {
+			String email, String work, Long userId) {
 		super();
 		this.cid = cid;
 		this.name = name;
@@ -27,6 +28,7 @@ public class ContactDTO {
 		this.nickName = nickName;
 		this.email = email;
 		this.work = work;
+		this.userId = userId;
 	}
 	public Long getCid() {
 		return cid;
@@ -77,9 +79,15 @@ public class ContactDTO {
 		this.work = work;
 	}
 	
+	public Long getUserId() {
+		return userId;
+	}
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
 	public static ContactDTO of (ContactEntity contactEntity) {
 		  return new ContactDTO(contactEntity.getCid(), contactEntity.getName(), contactEntity.getPhoneNumber(), 
-				  contactEntity.getDescription(), contactEntity.getImage(),contactEntity.getNickName(),contactEntity.getEmail(),contactEntity.getWork());
+				  contactEntity.getDescription(), contactEntity.getImage(),contactEntity.getNickName(),contactEntity.getEmail(),contactEntity.getWork(), contactEntity.getUser().getId());
 	}
 	@Override
 	public String toString() {
@@ -87,6 +95,7 @@ public class ContactDTO {
 				+ description + ", image=" + image + ", nickName=" + nickName + ", email=" + email + ", work=" + work
 				+ "]";
 	}
+	
 	
 	
 	
